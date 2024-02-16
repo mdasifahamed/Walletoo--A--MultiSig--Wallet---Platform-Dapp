@@ -49,3 +49,26 @@ Then Run The Tests
 npx hardhat test
 ```
 
+# OverView Of The Contracts
+
+### WalletFactory.sol
+
+**Purpose** The WalletFactory contract serves as a factory for creating instances of another contract called Wallet.
+Each Wallet instance represents a multisignature wallet where multiple users can submit and vote on transactions.
+
+**Key Features**
+- WalleCreations:
+The `WalletFactory::createWallet()` function allows an external account `(EOA)` to create a new multisignature wallet.
+Criteria for wallet creation include being an `EOA` and having at least three members (including the wallet creator).
+- User Wallet Management:
+The contract keeps track of wallet creators, wallet addresses, and the mapping of creators to wallets.
+A creator can query the wallets they have created using the `WalletFactory::getWalletAddressOfUser()` function.
+- Wallet Lookup:
+The `WalletFactory::getWalletAddressById()` function allows users to retrieve the wallet address based on its ID.
+
+- Internal Functions:
+`WalletFactory::isWalletCreator()` Checks if an address is a wallet creator. `WalletFactory::NotEOA()` Checks if an address is an external account (not a contract).
+
+
+
+
