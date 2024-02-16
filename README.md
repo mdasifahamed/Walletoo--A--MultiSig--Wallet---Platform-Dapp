@@ -53,10 +53,10 @@ npx hardhat test
 
 ### WalletFactory.sol
 
-**Purpose** The WalletFactory contract serves as a factory for creating instances of another contract called Wallet.
+**Purpose:** The WalletFactory contract serves as a factory for creating instances of another contract called Wallet.
 Each Wallet instance represents a multisignature wallet where multiple users can submit and vote on transactions.
 
-**Key Features**
+**Key Features:**
 - WalleCreations:
 The `WalletFactory::createWallet()` function allows an external account `(EOA)` to create a new multisignature wallet.
 Criteria for wallet creation include being an `EOA` and having at least three members (including the wallet creator).
@@ -68,6 +68,41 @@ The `WalletFactory::getWalletAddressById()` function allows users to retrieve th
 
 - Internal Functions:
 `WalletFactory::isWalletCreator()` Checks if an address is a wallet creator. `WalletFactory::NotEOA()` Checks if an address is an external account (not a contract).
+
+### Wallet.sol
+
+**Purpose:** The Wallet contract represents a multisignature wallet where users can propose and vote on transactions and user management of the wallet.
+
+**Key Features:**
+- User Management:
+Users can be added or removed from the wallet using the `Wallet::submitUserAddOrRemoveRequest()` function.
+The contract maintains a list of users, and each user has a corresponding fund balance.
+
+- Transaction Requests:
+Users can submit transaction requests using the `Wallet::submitTransactionRequest()` function.
+Requests can involve either `Ether` transfers or `ERC20 Token` transfers.
+
+- Voting System:
+Voting System:
+Users can vote on user add/remove requests `Wallet::voteOnAddOrRemoveMember()` and transaction requests `Wallet::voteOnTrxReq()`. If a request reaches the voting threshold, it gets executed.
+
+- Internal Functions:
+    - `Wallet::addUser()` : Adds a user to the wallet.
+    - `Wallet::removeUser()`: Removes a user from the wallet.
+    - `Wallet::executeTrx()`: Executes an Ether transfer for a transaction request.
+    - `Wallet::isToken()`: Checks if an address is a contract (token).
+
+- Fallback Function:
+The contract includes a fallback function that allows users to send Ether to the wallet, updating their fund balance.
+
+## Note:
+The contracts make use of various modifiers to ensure that only authorized actions can be performed.
+Both contracts are designed to be interacted with primarily by external accounts `(EOAs)` and not `other contracts`.
+In summary, the `WalletFactory` contract acts as a factory for creating `multisignature wallets` `Wallet contracts` with specified criteria, while the `Wallet` contract manages `users`, `handles transaction requests`, and implements a `voting system` for executing requests.
+
+
+
+
 
 
 
