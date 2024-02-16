@@ -49,7 +49,7 @@ Then Run The Tests
 npx hardhat test
 ```
 
-# OverView Of The Contracts
+# Overview Of The Contracts
 
 ### WalletFactory.sol
 
@@ -99,6 +99,13 @@ The contract includes a fallback function that allows users to send Ether to the
 The contracts make use of various modifiers to ensure that only authorized actions can be performed.
 Both contracts are designed to be interacted with primarily by external accounts `(EOAs)` and not `other contracts`.
 In summary, the `WalletFactory` contract acts as a factory for creating `multisignature wallets` `Wallet contracts` with specified criteria, while the `Wallet` contract manages `users`, `handles transaction requests`, and implements a `voting system` for executing requests.
+
+## Language And Tools Used 
+
+1. `Solidity` For Contract Developing And Custom Libray Writting For The Contracts.
+2. `Hardhat` For Testing Contracts And  As Development Framework.
+3. `Openzepplin-Contracts` Package For Using `IERC20` Which Has Been Used For `ERC20` Token Handeling.
+
 
 
 
