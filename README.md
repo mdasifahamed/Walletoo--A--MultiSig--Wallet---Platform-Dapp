@@ -10,6 +10,7 @@ On the platform, users can create a `MultiSig Wallet`. Users of the wallet are t
 4. Some Native Token Based On which Chain The Wallet Is Going To Deploy For Deployment Fee.
 
 **Voting Mechanism of The Wallet** 
+
 ```
 The Wallet Maintain M of N Voting Mechanism.
 If We Think That M Is The Total Number Of The Wallet.
@@ -21,13 +22,7 @@ That Means Minumum 4 Votes Is Required To Execute A Transaction/Operation For Wa
 ```
 
 
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.js
-```
+
 
 
 # To Try The Project Follow The Steps
@@ -36,3 +31,21 @@ npx hardhat run scripts/deploy.js
 ```shell
 git clone https://github.com/mdasifahamed/Walletoo--A--MultiSig--Wallet---Platform-Dapp.git
 ```
+2. Then Install The Dependencies
+
+```shell
+npm i
+```
+3. Then Run The Test To See The Tests
+
+First run the localchain of the `Hardhat`
+
+```shell
+npx hardhat node
+``` 
+Then Run The Tests
+
+```shell
+npx hardhat test
+```
+
